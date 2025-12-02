@@ -1,814 +1,1443 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ahsan Altaf - Academic Portfolio</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        :root {
-            --primary: #2c3e50;
-            --secondary: #3498db;
-            --accent: #e74c3c;
-            --light: #ecf0f1;
-            --dark: #2c3e50;
-            --gray: #7f8c8d;
-            --transition: all 0.3s ease;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-
-        body {
-            background-color: white;
-            color: var(--dark);
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
-
-        .container {
-            width: 90%;
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        /* Header */
-        header {
-            padding: 2rem 0;
-            text-align: center;
-            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-            margin-bottom: 3rem;
-        }
-
-        .profile-image {
-            width: 180px;
-            height: 180px;
-            border-radius: 50%;
-            margin: 0 auto 1.5rem;
-            overflow: hidden;
-            border: 5px solid var(--light);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            background: linear-gradient(135deg, var(--secondary), var(--accent));
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 4rem;
-        }
-
-        .name {
-            font-size: 2.5rem;
-            margin-bottom: 0.5rem;
-            color: var(--primary);
-        }
-
-        .title {
-            font-size: 1.3rem;
-            color: var(--gray);
-            margin-bottom: 1.5rem;
-            font-weight: 400;
-        }
-
-        .social-links {
-            display: flex;
-            justify-content: center;
-            gap: 1rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .social-links a {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background-color: var(--light);
-            color: var(--dark);
-            text-decoration: none;
-            transition: var(--transition);
-        }
-
-        .social-links a:hover {
-            background-color: var(--secondary);
-            color: white;
-            transform: translateY(-3px);
-        }
-
-        .cv-download {
-            display: inline-block;
-            padding: 10px 25px;
-            background-color: var(--accent);
-            color: white;
-            text-decoration: none;
-            border-radius: 5px;
-            font-weight: 500;
-            transition: var(--transition);
-            margin-top: 1rem;
-        }
-
-        .cv-download:hover {
-            background-color: #c0392b;
-            transform: translateY(-2px);
-        }
-
-        /* Navigation */
-        nav {
-            display: flex;
-            justify-content: center;
-            margin-bottom: 3rem;
-            flex-wrap: wrap;
-        }
-
-        .nav-link {
-            padding: 10px 20px;
-            margin: 0 10px;
-            color: var(--dark);
-            text-decoration: none;
-            font-weight: 500;
-            position: relative;
-            transition: var(--transition);
-        }
-
-        .nav-link:hover {
-            color: var(--secondary);
-        }
-
-        .nav-link.active {
-            color: var(--secondary);
-        }
-
-        .nav-link.active::after {
-            content: '';
-            position: absolute;
-            width: 100%;
-            height: 2px;
-            background-color: var(--secondary);
-            bottom: -5px;
-            left: 0;
-        }
-
-        /* Sections */
-        section {
-            margin-bottom: 4rem;
-            padding: 2rem 0;
-        }
-
-        .section-title {
-            font-size: 1.8rem;
-            margin-bottom: 2rem;
-            color: var(--primary);
-            position: relative;
-            display: inline-block;
-        }
-
-        .section-title::after {
-            content: '';
-            position: absolute;
-            width: 50px;
-            height: 3px;
-            background-color: var(--secondary);
-            bottom: -10px;
-            left: 0;
-        }
-
-        /* About Section */
-        .about-content {
-            display: grid;
-            grid-template-columns: 2fr 1fr;
-            gap: 3rem;
-            align-items: start;
-        }
-
-        .about-text p {
-            margin-bottom: 1.5rem;
-            color: var(--dark);
-        }
-
-        .research-interests {
-            background-color: var(--light);
-            padding: 1.5rem;
-            border-radius: 8px;
-        }
-
-        .research-interests h3 {
-            margin-bottom: 1rem;
-            color: var(--primary);
-        }
-
-        .interests-list {
-            list-style: none;
-        }
-
-        .interests-list li {
-            margin-bottom: 0.8rem;
-            display: flex;
-            align-items: center;
-        }
-
-        .interests-list li i {
-            color: var(--secondary);
-            margin-right: 10px;
-        }
-
-        /* Education Section */
-        .education-item {
-            margin-bottom: 2rem;
-            padding-bottom: 2rem;
-            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-        }
-
-        .education-item:last-child {
-            border-bottom: none;
-        }
-
-        .education-degree {
-            font-size: 1.3rem;
-            margin-bottom: 0.5rem;
-            color: var(--primary);
-        }
-
-        .education-institution {
-            font-weight: 600;
-            color: var(--secondary);
-            margin-bottom: 0.5rem;
-        }
-
-        .education-duration {
-            color: var(--gray);
-            font-style: italic;
-            margin-bottom: 0.5rem;
-        }
-
-        .education-details {
-            color: var(--dark);
-        }
-
-        /* Publications Section */
-        .publication-item {
-            margin-bottom: 1.5rem;
-            padding-bottom: 1.5rem;
-            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-        }
-
-        .publication-item:last-child {
-            border-bottom: none;
-        }
-
-        .publication-title {
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-            color: var(--primary);
-        }
-
-        .publication-authors {
-            color: var(--gray);
-            margin-bottom: 0.5rem;
-            font-style: italic;
-        }
-
-        .publication-venue {
-            color: var(--secondary);
-            margin-bottom: 0.5rem;
-        }
-
-        .publication-status {
-            display: inline-block;
-            padding: 3px 10px;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            font-weight: 600;
-            margin-top: 0.5rem;
-        }
-
-        .status-published {
-            background-color: #d4edda;
-            color: #155724;
-        }
-
-        .status-submitted {
-            background-color: #fff3cd;
-            color: #856404;
-        }
-
-        .status-in-progress {
-            background-color: #d1ecf1;
-            color: #0c5460;
-        }
-
-        /* Projects Section */
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 2rem;
-        }
-
-        .project-card {
-            background-color: white;
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-            transition: var(--transition);
-            border: 1px solid rgba(0, 0, 0, 0.05);
-        }
-
-        .project-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-        }
-
-        .project-content {
-            padding: 1.5rem;
-        }
-
-        .project-title {
-            font-size: 1.2rem;
-            margin-bottom: 0.8rem;
-            color: var(--primary);
-        }
-
-        .project-description {
-            color: var(--gray);
-            margin-bottom: 1rem;
-            font-size: 0.95rem;
-        }
-
-        .project-tech {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-            margin-bottom: 1rem;
-        }
-
-        .tech-tag {
-            background-color: var(--light);
-            color: var(--dark);
-            padding: 3px 10px;
-            border-radius: 20px;
-            font-size: 0.8rem;
-        }
-
-        /* Contact Section */
-        .contact-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 3rem;
-        }
-
-        .contact-info {
-            display: flex;
-            flex-direction: column;
-            gap: 1.5rem;
-        }
-
-        .contact-item {
-            display: flex;
-            align-items: center;
-        }
-
-        .contact-item i {
-            width: 40px;
-            height: 40px;
-            background-color: var(--light);
-            color: var(--secondary);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-right: 15px;
-            font-size: 1.1rem;
-        }
-
-        .contact-form {
-            background-color: var(--light);
-            padding: 2rem;
-            border-radius: 8px;
-        }
-
-        .form-group {
-            margin-bottom: 1.5rem;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 0.5rem;
-            font-weight: 500;
-            color: var(--primary);
-        }
-
-        .form-control {
-            width: 100%;
-            padding: 10px 15px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            font-size: 1rem;
-            transition: var(--transition);
-        }
-
-        .form-control:focus {
-            outline: none;
-            border-color: var(--secondary);
-            box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.2);
-        }
-
-        textarea.form-control {
-            min-height: 120px;
-            resize: vertical;
-        }
-
-        .btn {
-            display: inline-block;
-            padding: 10px 25px;
-            background-color: var(--secondary);
-            color: white;
-            border: none;
-            border-radius: 5px;
-            font-size: 1rem;
-            font-weight: 500;
-            text-decoration: none;
-            transition: var(--transition);
-            cursor: pointer;
-        }
-
-        .btn:hover {
-            background-color: #2980b9;
-        }
-
-        /* Footer */
-        footer {
-            background-color: var(--primary);
-            color: white;
-            padding: 3rem 0;
-            text-align: center;
-        }
-
-        .footer-content {
-            margin-bottom: 2rem;
-        }
-
-        .copyright {
-            color: rgba(255, 255, 255, 0.7);
-            font-size: 0.9rem;
-        }
-
-        /* Animations */
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .fade-in {
-            animation: fadeIn 0.8s ease forwards;
-        }
-
-        /* Responsive Design */
-        @media (max-width: 992px) {
-            .about-content,
-            .contact-content {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .name {
-                font-size: 2rem;
-            }
-            
-            .title {
-                font-size: 1.1rem;
-            }
-            
-            .profile-image {
-                width: 150px;
-                height: 150px;
-                font-size: 3rem;
-            }
-            
-            .nav-link {
-                margin: 5px;
-                padding: 8px 15px;
-            }
-            
-            .projects-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        @media (max-width: 576px) {
-            .container {
-                width: 95%;
-            }
-            
-            section {
-                padding: 1.5rem 0;
-            }
-            
-            .section-title {
-                font-size: 1.5rem;
-            }
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Ahsan Altaf - Interactive Portfolio</title>
+  <meta name="description" content="Ahsan Altaf — Researcher & Developer specializing in AI, ML, and Security." />
+  <style>
+    :root {
+      --primary: #2c3e50;
+      --secondary: #3498db;
+      --accent: #e74c3c;
+      --success: #2ecc71;
+      --terminal-bg: #b7b7b7;
+      --terminal-text: #000c3a;
+      --terminal-border: #031242;
+    }
+    
+    body {
+      margin: 0;
+      background: linear-gradient(135deg, #0b0b0b 0%, #1a1a1a 50%, #0f0f0f 100%);
+      color: #e0e0e0;
+      font-family: -apple-system, system-ui, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+      min-height: 100vh;
+      position: relative;
+      overflow-x: hidden;
+      cursor: default;
+    }
+
+    body::before,
+    body::after,
+    .floating-blob {
+      position: fixed;
+      border-radius: 50%;
+      background: linear-gradient(-45deg, #ff006e, #8338ec, #3a86ff, #06ffa5);
+      background-size: 400% 400%;
+      animation: gradientShift 4s ease infinite, float 6s ease-in-out infinite;
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    body::before {
+      width: 300px;
+      height: 300px;
+      top: 10%;
+      left: -10%;
+      animation-delay: 0s;
+      opacity: 0.1;
+    }
+
+    body::after {
+      width: 200px;
+      height: 200px;
+      bottom: 20%;
+      right: -5%;
+      animation-delay: -2s;
+      opacity: 0.08;
+    }
+
+    .floating-blob {
+      width: 150px;
+      height: 150px;
+      top: 60%;
+      left: 10%;
+      animation-delay: -1s;
+      opacity: 0.06;
+    }
+
+    @keyframes gradientShift {
+      0%, 100% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0px) rotate(0deg); }
+      33% { transform: translateY(-20px) rotate(120deg); }
+      66% { transform: translateY(10px) rotate(240deg); }
+    }
+
+    @keyframes gradient {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+    .nav-notification {
+        position: fixed;
+        top: 20px;
+        left: 70%;
+        transform: translateX(-50%);
+        background: linear-gradient(135deg, #1a1a1a, #2d2d2d);
+        border: 1px solid #444;
+        border-radius: 0 0 30px 30px;
+        padding: 18px 25px;
+        box-shadow: 
+            0 10px 40px rgba(0, 0, 0, 0.4),
+            inset 0 1px 0 rgba(255, 255, 255, 0.1);
+        z-index: 1000;
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        font-size: 16px;
+        color: #ffffff;
+        font-weight: 500;
+        animation: islandAppear 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        cursor: pointer;
+        transition: all 0.3s ease;
+        min-width: 320px;
+        max-width: 400px;
+    }
+
+    .nav-notification:hover {
+        background: linear-gradient(135deg, #252525, #363636);
+        transform: translateX(-50%) scale(1.02);
+        box-shadow: 
+            0 15px 50px rgba(0, 0, 0, 0.5),
+            inset 0 1px 0 rgba(255, 255, 255, 0.15);
+    }
+
+    .island-content {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        width: 100%;
+        position: relative;
+    }
+
+    .nav-emoji {
+        font-size: 22px;
+        animation: gentleBounce 2s infinite alternate;
+        filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+    }
+
+    .nav-text {
+        flex: 1;
+        text-align: center;
+        font-weight: 500;
+        letter-spacing: -0.2px;
+    }
+
+    .island-timer {
+        width: 40px;
+        height: 4px;
+        background: rgba(255, 255, 255, 0.2);
+        border-radius: 2px;
+        overflow: hidden;
+        position: relative;
+    }
+
+    .timer-fill {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+        background: linear-gradient(90deg, #667eea, #764ba2);
+        border-radius: 2px;
+        transition: none;
+    }
+
+    @keyframes islandAppear {
+        0% {
+            transform: translateX(-50%) translateY(-100px);
+            opacity: 0;
+            scale: 0.8;
+        }
+        70% {
+            transform: translateX(-50%) translateY(10px);
+            opacity: 1;
+            scale: 1.05;
+        }
+        100% {
+            transform: translateX(-50%) translateY(0);
+            opacity: 1;
+            scale: 1;
+        }
+    }
+
+    @keyframes gentleBounce {
+        0% {
+            transform: translateY(0) scale(1);
+        }
+        100% {
+            transform: translateY(-3px) scale(1.1);
+        }
+    }
+
+    /* Pulse effect for attention */
+    @keyframes pulseGlow {
+        0%, 100% {
+            box-shadow: 
+                0 10px 40px rgba(102, 126, 234, 0.3),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1);
+        }
+        50% {
+            box-shadow: 
+                0 10px 40px rgba(102, 126, 234, 0.6),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1);
+        }
+    }
+
+    .nav-notification {
+        animation: 
+            islandAppear 0.6s cubic-bezier(0.34, 1.56, 0.64, 1),
+            pulseGlow 2s ease-in-out 0.6s 2;
+    }
+
+    .profile-placeholder {
+    transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    .profile-placeholder:hover {
+        transform: scale(1.05);
+        box-shadow: 0 12px 35px rgba(102, 126, 234, 0.4);
+    }
+
+
+
+    
+    .profile-message {
+        position: fixed;
+        top: 15%;
+        left: 0;
+        right: calc(50% + 200px); /* Stop at profile picture */
+        transform: translateY(-50%);
+        background: linear-gradient(90deg, #667eea, #764ba2);
+        color: white;
+        padding: 20px 30px;
+        /* border-radius: 25px; */
+        border-radius: 0 0 30px 0;
+        font-size: 18px;
+        font-weight: 600;
+        white-space: nowrap;
+        z-index: 10;
+        animation: slideInFromLeft 0.6s ease-out, slideOutToLeft 0.6s ease-in 3.4s forwards;
+        backdrop-filter: blur(10px);
+        border-right: 3px solid rgba(255, 255, 255, 0.3);
+        box-shadow: 0 0 30px rgba(102, 126, 234, 0.5);
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        text-align: right;
+        padding-right: 50px;
+    }
+
+    @keyframes slideInFromLeft {
+        from {
+            transform: translateY(-50%) translateX(-100%);
+            opacity: 0;
+        }
+        to {
+            transform: translateY(-50%) translateX(0);
+            opacity: 1;
+        }
+    }
+
+    @keyframes slideOutToLeft {
+        to {
+            transform: translateY(-50%) translateX(-100%);
+            opacity: 0;
+        }
+    }
+
+    /* Make sure profile container has proper positioning */
+    .profile-container {
+        position: relative;
+        z-index: 11; /* Above the bar */
+    }
+
+    
+
+
+    .bg-animation {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+      opacity: 0.03;
+      background: linear-gradient(45deg, #667eea 0%, #764ba2 50%, #667eea 100%);
+      background-size: 400% 400%;
+      animation: gradient 15s ease infinite;
+    }
+
+    .wrap {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 60px 24px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .head {
+      text-align: center;
+    }
+
+    .profile-container {
+      position: relative;
+      width: 160px;
+      height: 160px;
+      margin: 0 auto 24px;
+    }
+
+    .profile-placeholder {
+      width: 160px;
+      height: 160px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 20px;
+      font-size: 64px;
+      font-weight: bold;
+      color: white;
+      cursor: pointer;
+      transition: all 300ms ease;
+      box-shadow: 0 8px 32px rgba(102, 126, 234, 0.3);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .profile-placeholder::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(45deg, transparent 30%, rgba(255,255,255,0.2) 50%, transparent 70%);
+      transform: translateX(-100%);
+      transition: transform 0.6s;
+    }
+    
+    .profile-placeholder:hover::after {
+      transform: translateX(100%);
+    }
+    .glasses-overlay {
+        position: absolute;
+        top: 10%;
+        left: 60%;
+        transform: translate(-50%, -50%);
+        font-size: 40px;
+        z-index: 3;
+        pointer-events: none;
+        animation: glassesPop 0.3s ease-out;
+        text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        filter: drop-shadow(0 0 8px rgba(255, 215, 0, 0.6));
+    }
+
+    @keyframes glassesPop {
+        0% {
+            transform: translate(-50%, -50%) scale(0);
+            opacity: 0;
+        }
+        70% {
+            transform: translate(-50%, -50%) scale(1.2);
+            opacity: 1;
+        }
+        100% {
+            transform: translate(-50%, -50%) scale(1);
+            opacity: 1;
+        }
+    }
+
+    .profile-image {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      object-fit: cover;
+      display: block;
+      transition: all 0.3s ease;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+      background: linear-gradient(135deg, var(--secondary), var(--accent));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 3.5rem;
+    }
+
+    .profile-image:hover {
+      transform: scale(1.05);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
+    }
+
+    h1 {
+      margin: 0 0 12px 0;
+      font-size: 36px;
+      letter-spacing: -0.02em;
+      font-weight: 600;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .tag {
+      margin: 0 0 16px 0;
+      color: #888;
+      font-weight: 400;
+      line-height: 1.6;
+      font-size: 15px;
+    }
+
+    .links {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      gap: 20px;
+      margin-top: 20px;
+    }
+
+    .links a {
+      margin: 0;
+      color: #e0e0e0;
+      text-decoration: none;
+      transition: all 250ms ease;
+      display: inline-flex;
+      align-items: center;
+      line-height: 1.2;
+      font-weight: 500;
+      padding: 8px 16px;
+      border-radius: 6px;
+      background: rgba(102, 126, 234, 0.1);
+      border: 1px solid rgba(102, 126, 234, 0.3);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .links a::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(102, 126, 234, 0.3), transparent);
+      transition: left 500ms ease;
+    }
+
+    .links a:hover::before {
+      left: 100%;
+    }
+
+    .links a:hover {
+      color: #fff;
+      background: rgba(102, 126, 234, 0.2);
+      border-color: rgba(102, 126, 234, 0.6);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+    }
+
+    .links a.disabled {
+      opacity: 0.4;
+      cursor: not-allowed;
+      pointer-events: none;
+    }
+    
+    .terminal-container {
+      margin-top: 30px;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    }
+
+    .terminal-header {
+      background: #1a1d27;
+      padding: 12px 16px;
+      display: flex;
+      align-items: center;
+      border-bottom: 1px solid var(--terminal-border);
+    }
+
+    .terminal-buttons {
+      display: flex;
+      gap: 8px;
+    }
+
+    .terminal-button {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+    }
+
+    .terminal-button.close {
+      background: #ff5f57;
+    }
+
+    .terminal-button.minimize {
+      background: #ffbd2e;
+    }
+
+    .terminal-button.maximize {
+      background: #28ca42;
+    }
+
+    .terminal-title {
+      color: #a0a5b0;
+      font-size: 14px;
+      margin-left: 16px;
+    }
+
+    .terminal {
+      display: block;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      background: var(--terminal-bg);
+      color: var(--terminal-text);
+      padding: 20px;
+      max-height: 400px;
+      overflow-y: auto;
+      overflow-x: hidden;
+      line-height: 1.5;
+      font-size: 15px;
+      font-weight: 800;
+      white-space: pre-wrap;
+      word-break: break-word;
+      overflow-wrap: anywhere;
+      hyphens: auto;
+    }
+
+    .terminal a {
+      color: #8ab4f8;
+      text-decoration: underline;
+    }
+
+    .terminal a:hover {
+      color: #cde3ff;
+    }
+
+    .terminal[hidden] {
+      display: none;
+    }
+
+    .prompt {
+      color: var(--success);
+    }
+
+    .command {
+      color: #66d9ef;
+    }
+
+    .highlight {
+      color: #fd971f;
+    }
+
+    .typing-cursor {
+      display: inline-block;
+      width: 8px;
+      height: 16px;
+      background: var(--terminal-text);
+      margin-left: 4px;
+      animation: blink 1s infinite;
+      vertical-align: middle;
+    }
+
+    @keyframes blink {
+      0%, 50% { opacity: 1; }
+      51%, 100% { opacity: 0; }
+    }
+
+    .stats {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      margin-top: 30px;
+      flex-wrap: wrap;
+    }
+
+    .stat-item {
+      text-align: center;
+      padding: 16px 24px;
+      background: rgba(102, 126, 234, 0.1);
+      border: 1px solid rgba(102, 126, 234, 0.3);
+      border-radius: 8px;
+      transition: all 300ms ease;
+    }
+
+    .stat-item:hover {
+      background: rgba(102, 126, 234, 0.2);
+      transform: translateY(-4px);
+      box-shadow: 0 8px 24px rgba(102, 126, 234, 0.3);
+    }
+
+    .stat-number {
+      font-size: 28px;
+      font-weight: bold;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .stat-label {
+      font-size: 13px;
+      color: #888;
+      margin-top: 4px;
+    }
+
+    /* Interactive Boxes */
+    .interactive-area {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 2;
+    }
+
+    .click-box {
+      position: absolute;
+      background: rgba(102, 126, 234, 0.1);
+      border: 1px solid rgba(102, 126, 234, 0.4);
+      border-radius: 8px;
+      padding: 15px;
+      max-width: 300px;
+      pointer-events: auto;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+      backdrop-filter: blur(10px);
+      transform: scale(0);
+      opacity: 0;
+      transition: transform 0.3s ease, opacity 0.3s ease;
+      z-index: 10;
+    }
+
+    .click-box.active {
+      transform: scale(1);
+      opacity: 1;
+    }
+
+    .click-box h3 {
+      margin: 0 0 10px 0;
+      color: #667eea;
+      font-size: 16px;
+    }
+
+    .click-box p {
+      margin: 0;
+      font-size: 14px;
+      line-height: 1.4;
+    }
+
+    .close-box {
+      position: absolute;
+      top: 8px;
+      right: 8px;
+      background: none;
+      border: none;
+      color: #e0e0e0;
+      cursor: pointer;
+      font-size: 16px;
+      width: 20px;
+      height: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      transition: background 0.2s;
+    }
+
+    .close-box:hover {
+      background: rgba(255, 255, 255, 0.1);
+    }
+   
+
+    .particle {
+      position: absolute;
+      width: 6px;
+      height: 6px;
+      background: #667eea;
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+
+
+    .rapid-message {
+    border-radius: 25px !important;
+    animation: wiggle 0.8s ease-in-out !important;
+    }
+
+    .cute-face {
+        font-size: 52px;
+        animation: bounce 0.6s infinite alternate;
+        filter: drop-shadow(0 4px 8px rgba(255, 105, 180, 0.4));
+        display: inline-block;
+    }
+
+    @keyframes wiggle {
+        0%, 100% { transform: rotate(-2deg); }
+        50% { transform: rotate(2deg); }
+    }
+
+    @keyframes bounce {
+        0% { transform: translateY(0) scale(1); }
+        100% { transform: translateY(-8px) scale(1.1); }
+    }
+
+    .rapid-message:hover .cute-face {
+        animation: crazySpin 0.5s ease-in-out;
+    }
+
+    @keyframes crazySpin {
+        0% { transform: rotate(0deg) scale(1); }
+        50% { transform: rotate(180deg) scale(1.3); }
+        100% { transform: rotate(360deg) scale(1); }
+    }
+
+    @media (max-width: 768px) {
+      .wrap {
+        padding: 20px 16px;
+      }
+      
+      h1 {
+        font-size: 28px;
+      }
+      
+      .tag {
+        font-size: 16px;
+      }
+      
+      .links {
+        gap: 12px;
+      }
+      
+      .links a {
+        padding: 6px 12px;
+        font-size: 14px;
+      }
+      
+      .stats {
+        gap: 15px;
+      }
+      
+      .stat-item {
+        padding: 12px 15px;
+        min-width: 100px;
+      }
+      
+      .stat-value {
+        font-size: 24px;
+      }
+      
+      .robot-container {
+        display: none;
+      }
+    }
+  </style>
 </head>
+
 <body>
-    <!-- Header -->
-    <header>
-        <div class="container">
-            <div class="profile-image">
-                <i class="fas fa-user-graduate"></i>
-            </div>
-            <h1 class="name">Ahsan Altaf</h1>
-            <p class="title">Researcher & Developer</p>
-            <div class="social-links">
-                <a href="#" title="Email"><i class="fas fa-envelope"></i></a>
-                <a href="#" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-                <a href="#" title="GitHub"><i class="fab fa-github"></i></a>
-                <a href="#" title="Google Scholar"><i class="fas fa-graduation-cap"></i></a>
-                <a href="#" title="ORCID"><i class="fab fa-orcid"></i></a>
-            </div>
-            <a href="#" class="cv-download"><i class="fas fa-download"></i> Download CV</a>
-        </div>
-    </header>
-
-    <!-- Navigation -->
-    <div class="container">
-        <nav>
-            <a href="#about" class="nav-link active">About</a>
-            <a href="#education" class="nav-link">Education</a>
-            <a href="#publications" class="nav-link">Publications</a>
-            <a href="#projects" class="nav-link">Projects</a>
-            <a href="#contact" class="nav-link">Contact</a>
-        </nav>
+  <div class="bg-animation"></div>
+  <div class="interactive-area" id="interactiveArea"></div>
+  <div class="robot-container">
+    <div class="robot">
+      <div class="robot-head">
+        <div class="robot-eye left"></div>
+        <div class="robot-eye right"></div>
+      </div>
+      <div class="robot-body"></div>
     </div>
+  </div>
+  
+  <div class="wrap">
+    <div class="floating-blob"></div>
+    <div class="floating-blob" style="top: 30%; right: 20%; width: 250px; height: 250px; animation-delay: -3s;"></div>
+    
+    <div class="head">
+      <!-- <div class="profile-placeholder" id="profilePlaceholder" title="Click to reveal terminal">AA</div> -->
+      <img src="profile.jpg" alt="Ahsan Altaf" loading="eager" decoding="async" class="profile-placeholder background-size cover" id="profilePlaceholder"/>
+      <h1>Ahsan Altaf</h1>
+      <p class="tag">MS Researcher in AI & ML | Quaid-i-Azam University<br>Building Secure & Intelligent Systems</p>
+      <div class="stats">
+        <div class="stat-item">
+          <div class="stat-number">2+</div>
+          <div class="stat-label">Years in AI/ML</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">4.0</div>
+          <div class="stat-label">MS CGPA</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">1+</div>
+          <div class="stat-label">Publications</div>
+        </div>
+      </div>
+      <p class="links">
+        <a href="#about" data-target="about">About</a>
+        <a href="#research" data-target="research">Research</a>
+        <a href="#projects" data-target="projects">Projects</a>
+        <a href="#publications" data-target="publications">Publications</a>
+        <a href="#contact" data-target="contact">Contact</a>
+        <a href="https://mr-aoh.github.io/Ahsan_CV.pdf" aria-label="CV" title="CV">CV↗</a>
+        <a href="https://scholar.google.com" target="_blank" rel="noopener" title="Google Scholar">Scholar↗</a>
+        <a href="https://github.com/MR-AOH" target="_blank" rel="noopener" title="GitHub">GitHub↗</a>
+        <a href="https://linkedin.com/in/ahsan-chattha-547086262" target="_blank" rel="noopener" title="LinkedIn">LinkedIn↗</a>
+      </p>
+    </div>
+    
+    <div class="terminal-container">
+      <div class="terminal-header">
+        <div class="terminal-buttons">
+          <div class="terminal-button close"></div>
+          <div class="terminal-button minimize"></div>
+          <div class="terminal-button maximize"></div>
+        </div>
+        <div class="terminal-title">terminal — ahsan-altaf-portfolio</div>
+      </div>
+      <div id="terminal" class="terminal" aria-live="polite"></div>
+    </div>
+  </div>
 
-    <!-- About Section -->
-    <section id="about">
-        <div class="container">
-            <h2 class="section-title">About Me</h2>
-            <div class="about-content">
-                <div class="about-text">
-                    <p>I am a researcher and developer with expertise in Machine Learning, Artificial Intelligence, and Large Language Models. My research focuses on applying these technologies to solve real-world problems in security, privacy, and intelligent systems.</p>
-                    <p>Currently pursuing my MS in Information Technology at Quaid-i-Azam University, Islamabad, where I maintain a perfect 4.0 CGPA. My research interests include LLM security, IoV (Internet of Vehicles) security, computer vision, and NLP.</p>
-                    <p>I have experience as a Visiting Lecturer and Teaching Assistant, and I'm proficient in a wide range of technologies including Python, PyTorch, TensorFlow, Ethereum, and various IoT platforms.</p>
-                </div>
-                <div class="research-interests">
-                    <h3>Research Interests</h3>
-                    <ul class="interests-list">
-                        <li><i class="fas fa-robot"></i> Machine Learning & AI</li>
-                        <li><i class="fas fa-brain"></i> Large Language Models</li>
-                        <li><i class="fas fa-shield-alt"></i> Security & Privacy</li>
-                        <li><i class="fas fa-car"></i> Internet of Vehicles</li>
-                        <li><i class="fas fa-eye"></i> Computer Vision</li>
-                        <li><i class="fas fa-language"></i> Natural Language Processing</li>
-                        <li><i class="fas fa-link"></i> Blockchain Technology</li>
-                    </ul>
-                </div>
+<script>
+(function () {
+  // Initialize terminal with welcome message
+  var terminal = document.getElementById('terminal');
+  var navLinks = document.querySelectorAll('.links a[data-target]');
+  var allTopLinks = document.querySelectorAll('.links a');
+  var isTyping = false;
+  var typingTimeout = null;
+  var typingToken = 0;
+  var interactiveArea = document.getElementById('interactiveArea');
+  var profilePlaceholder = document.getElementById('profilePlaceholder');
+  var cvLink = document.getElementById('cvLink');
+  
+  // Safety variables
+  let clickCount = 0;
+  let lastClickTime = 0;
+  let rapidClickTimeout;
+  let activeBoxes = 0;
+  const MAX_BOXES = 8; // Limit number of boxes to prevent memory issues
+  
+  // Remove robot container from DOM
+  document.querySelector('.robot-container')?.remove();
+
+
+  // Enhanced content with more details and personality
+  var contentMap = {
+    about: [
+      'ahsan@qau:~$ whoami',
+      '',
+      'Hello! I\'m Ahsan Altaf, a passionate researcher and developer.',
+      '',
+      'My work focuses on the intersection of:',
+      '- Machine Learning & Artificial Intelligence',
+      '- Large Language Models (LLMs)',
+      '- Security & Privacy',
+      '- Natural Language Processing (NLP)',
+      '- Responsible AI',
+      '',
+      'I enjoy solving complex problems and building systems that',
+      'make technology more secure, private, and intelligent. When things getting challenging, It\'s a thrill for me to dive deep and find innovative solutions.',
+      '',
+      'When I\'m not coding or researching, I enjoy exploring new',
+      'technologies and reading about AI advancements.',
+      '',
+      'Type "help" to see available commands or click any menu item.'
+    ],
+    research: [
+      'ahsan@qau:~$ ls research interests',
+      '',
+      'My research interests include:',
+      '',
+      '• LLM Security & Privacy',
+      '  - Developing security frameworks for large language models',
+      '  - Privacy-preserving AI techniques',
+      '',
+      '• Internet of Vehicles (IoV)',
+      '  - Secure communication protocols',
+      '  - Blockchain integration for vehicle networks',
+      '',
+      '• Computer Vision & NLP',
+      '  - Multimodal AI systems',
+      '  - Deception detection from facial/voice features',
+      '',
+      '• Federated Learning',
+      '  - Privacy-preserving distributed ML',
+      '  - Applications in smart home systems'
+    ],
+    projects: [
+      'ahsan@qau:~$ ./show_projects.sh',
+      '',
+      'Here are some of my notable projects:',
+      '',
+      '• Hybrid IoV Security with SSI and LLM',
+      '  - Combined Self-Sovereign Identity with LLMs',
+      '  - Enhanced security for smart vehicle communication',
+      '  - Tech: Python, Ethereum, LLaMA 3.2, Cryptography',
+      '',
+      '• Fine-tuning LLaMA 3.2 for Legal Text Summarization',
+      '  - Adapted LLM for legal domain tasks',
+      '  - Case summary generation and outcome prediction',
+      '  - Tech: LLaMA 3.2, PyTorch, Hugging Face Transformers',
+      '',
+      '• Deception Detection from Facial & Voice Features',
+      '  - Analyzed lip/eyebrow movements and voice patterns',
+      '  - Achieved 93% accuracy in deception detection',
+      '  - Tech: OpenCV, PyTorch, Scikit-learn, Mediapipe',
+      '',
+      '• Cybersecurity Vulnerability Scanner using LLMs',
+      '  - LLM-powered security analysis tool',
+      '  - Automated vulnerability detection and reporting',
+      '  - Tech: Python, Gemini LLM, Nmap, Command-line tools'
+    ],
+    publications: [
+       'ahsan@qau:~$ cat publications.bib',
+          '',
+          '📄 PUBLISHED:',
+          '',
+          '[1] Empowering Smart Vehicles: Giving Authority with LLM and SSI',
+          '    FIT 2024 Conference, Islamabad',
+          '    DOI: 10.1109/FIT63703.2024.10838412',
+          '    https://doi.org/10.1109/FIT63703.2024.10838412',
+          '',
+          '📝 SUBMITTED:',
+          '',
+          '[2] Context-Aware IoV Security: A Decentralized User-Controlled',
+          '    Privacy-Preserving Multi-Layered Solution',
+          '    IEEE Internet of Things Journal',
+          '',
+          '[3] Secure Smart Home: Federated Learning with LLM-Based',
+          '    Recommendations and Differential Privacy (Second Author)',
+          '    EAI SmartSP 2025',
+          '',
+          '🔬 IN PREPARATION:',
+          '',
+          '[4] Security Reference Architecture for Large Language Models',
+          '    Focus: Mitigating attacks on LLMs',
+          '',
+          '[5] Detecting Deception Based on Facial and Voice Features',
+          '    (Second Author) | 93% accuracy achieved',
+    ],
+    education: [
+      'ahsan@qau:~$ cat education.txt',
+      '',
+      'My academic background:',
+      '',
+      '• MS in Information Technology',
+      '  - Quaid-i-Azam University, Islamabad',
+      '  - 2023 – 2025 | CGPA: 4.0/4.0',
+      '  - Thesis: "A Hybrid Approach to IoV Security and Privacy:',
+      '    Combining SSI and LLM"',
+      '',
+      '• BS in Information Technology',
+      '  - University of the Punjab, Lahore',
+      '  - 2018 – 2022 | CGPA: 3.25/4.0',
+      '',
+      'Teaching Experience:',
+      '• Visiting Lecturer at Quaid-i-Azam University',
+      '  - 6 month as Lecturer + 1 year as Teaching Assistant'
+    ],
+    contact: [
+      'ahsan@qau:~$ cat contact.txt',
+      '',
+      'You can reach me through:',
+      '',
+      '• Email:',
+      '  - ahsanchattha145@gmail.com',
+      '',
+      '• Phone: +923438413119',
+      '',
+      '• Location: Pakistan',
+      '',
+      '• Professional Profiles:',
+      '  - LinkedIn: linkedin.com/in/ahsan-chattha-547086262',
+      '  - GitHub: github.com/MR-AOH',
+      '  - ORCID: orcid.org/0009-0006-8356-9877',
+      '',
+      'Feel free to connect for research collaborations,',
+      'project discussions, or just to say hello!'
+    ],
+    help: [
+      '> open help',
+      '',
+      'Available commands:',
+      '',
+      '• about     - Learn about me and my interests',
+      '• research  - Explore my research areas',
+      '• projects  - View my notable projects',
+      '• publications - See my research publications',
+      '• education - Check my academic background',
+      '• contact   - Find my contact information',
+      '• help      - Show this help message',
+      '',
+      'You can also click the menu buttons above or use the',
+      'keyboard shortcuts (coming soon!).'
+    ]
+  };
+
+  // Initialize with welcome message
+  var welcomeMessage = [
+    'Welcome to Ahsan Altaf\'s interactive portfolio!',
+    'Type "help" to see available commands.',
+    '',
+    '> '
+  ].join('\n');
+  
+  terminal.textContent = welcomeMessage;
+
+  function clearTerminal() { 
+    terminal.textContent = ''; 
+  }
+
+  function setNavDisabled(disabled) {
+    allTopLinks.forEach(link => {
+      link.classList.toggle('disabled', disabled);
+      disabled ? link.setAttribute('aria-disabled', 'true') : link.removeAttribute('aria-disabled');
+    });
+  }
+
+  function cancelTyping() {
+    typingToken++;
+    if (typingTimeout) { 
+      clearTimeout(typingTimeout); 
+      typingTimeout = null; 
+    }
+    isTyping = false;
+    setNavDisabled(false);
+  }
+
+  function typeLines(lines, done) {
+    isTyping = true;
+    setNavDisabled(true);
+    var i = 0, char = 0;
+    var myToken = ++typingToken;
+    
+    function step() {
+      if (myToken !== typingToken) { return; }
+      if (i >= lines.length) { 
+        isTyping = false; 
+        setNavDisabled(false); 
+        if (myToken === typingToken && done) done(); 
+        return; 
+      }
+      
+      var line = lines[i];
+      if (char < line.length) {
+        terminal.textContent += line.charAt(char);
+        char++;
+      } else {
+        terminal.textContent += '\n';
+        i++; 
+        char = 0;
+      }
+      
+      terminal.scrollTop = terminal.scrollHeight;
+      typingTimeout = setTimeout(step, 10);
+    }
+    
+    typingTimeout = setTimeout(step, 0);
+  }
+
+  function linkify() {
+    var text = terminal.textContent;
+    var html = text
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/(https?:\/\/[^\s]+)/g, '<a href="$1" target="_blank" rel="noopener">$1<\/a>');
+    terminal.innerHTML = html;
+  }
+
+  function show(key) {
+    var lines = contentMap[key] || ['> unknown command. Type "help" for available commands.'];
+    terminal.hidden = false;
+    cancelTyping();
+    clearTerminal();
+    typeLines(lines, linkify);
+    terminal.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+
+  // Safe Interactive Box Creation
+  function createInteractiveBox(x, y) {
+    // Prevent too many boxes
+    if (activeBoxes >= MAX_BOXES) {
+      removeOldestBox();
+    }
+    if (activeBoxes >= 3) {
+        showNavBarMessage();
+        // return; // Don't create a new box
+    }
+
+    const now = Date.now();
+    const timeDiff = now - lastClickTime;
+    lastClickTime = now;
+
+    // Detect rapid clicking (more than 3 clicks in 1 second)
+    if (timeDiff < 222) {
+      clickCount++;
+      if (clickCount >= 2) {
+        clearTimeout(rapidClickTimeout);
+        showNavBarMessage();
+        clickCount = 0;
+        return;
+      }
+    } else {
+      clickCount = 1;
+    }
+
+    // Clear the rapid click counter after 1 second
+    clearTimeout(rapidClickTimeout);
+    rapidClickTimeout = setTimeout(() => {
+      clickCount = 0;
+    }, 1000);
+
+    const box = document.createElement('div');
+    box.className = 'click-box';
+    box.style.left = `${x}px`;
+    box.style.top = `${y}px`;
+    
+   const Messages = [
+    // Technical & Research
+    { title: 'AI Researcher', content: 'Passionate about advancing AI technologies.' },
+    { title: 'ML Enthusiast', content: 'Loving the world of Machine Learning! 🤖' },
+    { title: 'Privacy Protector', content: 'Committed to user data privacy! 🔒' },
+    
+    // Personal Interests & Hobbies
+    { title: 'Badminton Player', content: 'Love playing badminton! 🏸' },
+    { title: 'Food Enthusiast', content: 'Always exploring new cuisines and flavors! 🍕' },
+    { title: 'Coffee Lover', content: 'Fueled by coffee and code! ☕' },
+    { title: 'Tech Explorer', content: 'Constantly learning new technologies! 💻' },
+    
+    // Professional Goals
+    { title: 'PhD Aspirations', content: 'Looking for research supervision opportunities.' },
+    { title: 'Research Focus', content: 'AI security and privacy applications.' },
+    { title: 'Industry Impact', content: 'Bridging academic research with real-world solutions.' },
+    { title: 'Collaboration', content: 'Open to research partnerships and projects.' },
+    
+    // Fun & Personality
+    { title: 'Code Debugging', content: 'Finding bugs is like a treasure hunt! 🐛' },
+    { title: 'AI Conversations', content: 'I talk to AI models more than people some days! 🤖' },
+    { title: 'Research Adventures', content: 'Every bug is a research opportunity! 🔍' },
+    { title: 'Tech Stack', content: 'Python + Coffee = Infinite possibilities! ⚡' },
+    { title: 'Learning Journey', content: 'From BS to MS - still hungry for knowledge! 🎓' },
+    
+    // Certifications & Achievements
+    { title: 'Coursera Certifications', content: 'Multiple AI/ML and development courses.' },
+    { title: 'Conference Presentations', content: 'Presented research at international conferences.' },
+    { title: 'Teaching Excellence', content: '6 month as lecturer, 1 year as TA.' },
+    
+    // Future Vision
+    { title: 'AI Ethics', content: 'Passionate about responsible AI development.' },
+    { title: 'Privacy & Security', content: 'Interested in domain of privacy and security.' },
+
+];
+
+    const randomContent = Messages[Math.floor(Math.random() * Messages.length)];
+
+    box.innerHTML = `
+      <button class="close-box">&times;</button>
+      <h3>${randomContent.title}</h3>
+      <p>${randomContent.content}</p>
+    `;
+    
+    interactiveArea.appendChild(box);
+    activeBoxes++;
+    
+    // Animate in
+    setTimeout(() => {
+      box.classList.add('active');
+    }, 10);
+    
+    // Close button functionality
+    const closeBtn = box.querySelector('.close-box');
+    const removeBox = () => {
+      box.classList.remove('active');
+      setTimeout(() => {
+        if (box.parentNode === interactiveArea) {
+          interactiveArea.removeChild(box);
+          activeBoxes = Math.max(0, activeBoxes - 1);
+        }
+      }, 300);
+    };
+    
+    closeBtn.addEventListener('click', removeBox);
+    
+    // Auto-close after 6 seconds
+    const autoRemove = setTimeout(removeBox, 6000);
+    
+    // Clean up on manual close
+    box._cleanup = () => {
+      clearTimeout(autoRemove);
+      removeBox();
+    };
+  }
+
+  function removeOldestBox() {
+    const boxes = document.querySelectorAll('.click-box:not(.rapid-message)');
+    if (boxes.length > 0) {
+      const oldestBox = boxes[0];
+      if (oldestBox._cleanup) {
+        oldestBox._cleanup();
+      }
+    }
+  }
+
+
+  // Safe Particle Effect with limits
+  function createParticles(x, y) {
+    const particleCount = 8; // Reduced for performance
+    const colors = ['#ff6b6b', '#4ecdc4', '#45b7d1', '#96ceb4'];
+    
+    for (let i = 0; i < particleCount; i++) {
+      const particle = document.createElement('div');
+      particle.className = 'particle';
+      particle.style.left = `${x}px`;
+      particle.style.top = `${y}px`;
+      particle.style.background = colors[Math.floor(Math.random() * colors.length)];
+      document.body.appendChild(particle);
+      
+      const angle = (i / particleCount) * Math.PI * 2;
+      const speed = 1 + Math.random() * 2;
+      const vx = Math.cos(angle) * speed;
+      const vy = Math.sin(angle) * speed;
+      
+      let opacity = 1;
+      const size = 3 + Math.random() * 3;
+      particle.style.width = `${size}px`;
+      particle.style.height = `${size}px`;
+      
+      const animateParticle = () => {
+        opacity -= 0.03;
+        particle.style.opacity = opacity;
+        particle.style.transform = `translate(${vx * (1 - opacity) * 60}px, ${vy * (1 - opacity) * 60}px) scale(${1 - opacity})`;
+        
+        if (opacity > 0) {
+          requestAnimationFrame(animateParticle);
+        } else {
+          if (particle.parentNode) {
+            document.body.removeChild(particle);
+          }
+        }
+      };
+      
+      animateParticle();
+    }
+  }
+
+    
+    function showNavBarMessage() {
+    // Remove any existing nav notification
+    const existingNav = document.querySelector('.nav-notification');
+    if (existingNav) {
+        existingNav.remove();
+    }
+    
+    // Disable clicks for 4 seconds
+    document.body.style.pointerEvents = 'none';
+    
+    const messages = [
+        "Let me catch a breath! Your fingers are faster than Usain Bolt! 🏃‍♂️",
+        "Wait! Are you testing my response time or just bored? 🤔",
+        "Chill! Are you trying to break the click record? 🏆",
+        "Whoa! Save some clicks for the rest of the internet! 🌐",
+        "Yikes! Your mouse is working overtime! 🔥",
+        "Whoa there! Save some clicks for tomorrow! 📅",
+        "Easy! You're clicking like it's a competition! 🏆",
+    ];
+
+    function getRandomInteger(min, max) {
+        min = Math.ceil(min); // Ensure the minimum is an integer
+        max = Math.floor(max); // Ensure the maximum is an integer
+        return Math.floor(Math.random() * (max - min + 1)) + min;
+    }
+    const randomMessage = messages[getRandomInteger(0, messages.length - 1)];
+    const cuteFaces = ['🤔', '😅', '🥺', '😰'];
+    const randomFace = cuteFaces[getRandomInteger(0, cuteFaces.length - 1)];
+    
+    const navNotification = document.createElement('div');
+    navNotification.className = 'nav-notification';
+    navNotification.innerHTML = `
+        <div class="island-content">
+            <span class="nav-emoji">${randomFace}</span>
+            <span class="nav-text">${randomMessage}</span>
+            <div class="island-timer">
+                <div class="timer-fill"></div>
             </div>
         </div>
-    </section>
-
-    <!-- Education Section -->
-    <section id="education">
-        <div class="container">
-            <h2 class="section-title">Education</h2>
-            <div class="education-item">
-                <h3 class="education-degree">MS in Information Technology</h3>
-                <div class="education-institution">Quaid-i-Azam University, Islamabad</div>
-                <div class="education-duration">2023 – 2025</div>
-                <div class="education-details">CGPA: 4.0</div>
-            </div>
-            <div class="education-item">
-                <h3 class="education-degree">BS in Information Technology</h3>
-                <div class="education-institution">University of the Punjab, Lahore</div>
-                <div class="education-duration">2018 – 2022</div>
-                <div class="education-details">CGPA: 3.25</div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Publications Section -->
-    <section id="publications">
-        <div class="container">
-            <h2 class="section-title">Publications</h2>
-            <div class="publication-item">
-                <h3 class="publication-title">Empowering Smart Vehicles: Giving Authority with LLM and SSI</h3>
-                <div class="publication-authors">Ahsan Altaf</div>
-                <div class="publication-venue">2024 International Conference on Frontiers of Information Technology (FIT)</div>
-                <div class="publication-status status-published">Published</div>
-            </div>
-            <div class="publication-item">
-                <h3 class="publication-title">Context-Aware IoV Security: A Decentralized User-Controlled Privacy-Preserving Multi-Layered Solution</h3>
-                <div class="publication-authors">Ahsan Altaf</div>
-                <div class="publication-venue">IEEE Internet of Things Journal</div>
-                <div class="publication-status status-submitted">Submitted</div>
-            </div>
-            <div class="publication-item">
-                <h3 class="publication-title">Secure Smart Home: Federated Learning with LLM-Based Recommendations and Differential Privacy</h3>
-                <div class="publication-authors">Ahsan Altaf (Second Author)</div>
-                <div class="publication-venue">EAI SmartSP 2025</div>
-                <div class="publication-status status-submitted">Submitted</div>
-            </div>
-            <div class="publication-item">
-                <h3 class="publication-title">Security Reference Architecture for Large Language Models</h3>
-                <div class="publication-authors">Ahsan Altaf</div>
-                <div class="publication-status status-in-progress">In Progress</div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Projects Section -->
-    <section id="projects">
-        <div class="container">
-            <h2 class="section-title">Research Projects</h2>
-            <div class="projects-grid">
-                <div class="project-card">
-                    <div class="project-content">
-                        <h3 class="project-title">Hybrid IoV Security with SSI and LLM</h3>
-                        <p class="project-description">Combining Self-Sovereign Identity and Large Language Models for secure information sharing in smart vehicles.</p>
-                        <div class="project-tech">
-                            <span class="tech-tag">Python</span>
-                            <span class="tech-tag">Ethereum</span>
-                            <span class="tech-tag">LLaMA 3.2</span>
-                        </div>
-                        <a href="#" class="btn">View Details</a>
-                    </div>
-                </div>
-                <div class="project-card">
-                    <div class="project-content">
-                        <h3 class="project-title">LLaMA 3.2 for Legal Text Summarization</h3>
-                        <p class="project-description">Fine-tuned LLaMA 3.2 7B on legal datasets for case summary generation and outcome prediction.</p>
-                        <div class="project-tech">
-                            <span class="tech-tag">LLaMA 3.2</span>
-                            <span class="tech-tag">PyTorch</span>
-                            <span class="tech-tag">Hugging Face</span>
-                        </div>
-                        <a href="#" class="btn">View Details</a>
-                    </div>
-                </div>
-                <div class="project-card">
-                    <div class="project-content">
-                        <h3 class="project-title">Deception Detection from Facial & Voice</h3>
-                        <p class="project-description">Analyzing lip and eyebrow movements with voice features to detect deception with 93% accuracy.</p>
-                        <div class="project-tech">
-                            <span class="tech-tag">OpenCV</span>
-                            <span class="tech-tag">PyTorch</span>
-                            <span class="tech-tag">Scikit-learn</span>
-                        </div>
-                        <a href="#" class="btn">View Details</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section id="contact">
-        <div class="container">
-            <h2 class="section-title">Contact</h2>
-            <div class="contact-content">
-                <div class="contact-info">
-                    <div class="contact-item">
-                        <i class="fas fa-envelope"></i>
-                        <div>
-                            <h3>Email</h3>
-                            <p>ahsanchattha145@gmail.com</p>
-                        </div>
-                    </div>
-                    <div class="contact-item">
-                        <i class="fas fa-phone"></i>
-                        <div>
-                            <h3>Phone</h3>
-                            <p>03438413119</p>
-                        </div>
-                    </div>
-                    <div class="contact-item">
-                        <i class="fas fa-map-marker-alt"></i>
-                        <div>
-                            <h3>Location</h3>
-                            <p>Pakistan</p>
-                        </div>
-                    </div>
-                    <div class="contact-item">
-                        <i class="fas fa-id-badge"></i>
-                        <div>
-                            <h3>ORCID</h3>
-                            <p>0009-0006-8356-9877</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="contact-form">
-                    <form id="contactForm">
-                        <div class="form-group">
-                            <label for="name">Your Name</label>
-                            <input type="text" id="name" class="form-control" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="email">Your Email</label>
-                            <input type="email" id="email" class="form-control" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="subject">Subject</label>
-                            <input type="text" id="subject" class="form-control" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="message">Message</label>
-                            <textarea id="message" class="form-control" required></textarea>
-                        </div>
-                        <button type="submit" class="btn">Send Message</button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <div class="footer-content">
-                <p>Ahsan Altaf - Researcher & Developer</p>
-                <div class="social-links">
-                    <a href="#"><i class="fas fa-envelope"></i></a>
-                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                    <a href="#"><i class="fab fa-github"></i></a>
-                    <a href="#"><i class="fas fa-graduation-cap"></i></a>
-                </div>
-            </div>
-            <div class="copyright">
-                <p>&copy; 2023 Ahsan Altaf. All Rights Reserved.</p>
-            </div>
-        </div>
-    </footer>
-
-    <script>
-        // Smooth scrolling for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                
-                const targetId = this.getAttribute('href');
-                if(targetId === '#') return;
-                
-                const targetElement = document.querySelector(targetId);
-                if(targetElement) {
-                    window.scrollTo({
-                        top: targetElement.offsetTop - 100,
-                        behavior: 'smooth'
-                    });
+    `;
+    
+    document.body.appendChild(navNotification);
+    
+    // Start timer animation
+    setTimeout(() => {
+        const timerFill = navNotification.querySelector('.timer-fill');
+        if (timerFill) {
+            timerFill.style.width = '0%';
+            timerFill.style.transition = 'width 4s linear';
+        }
+    }, 100);
+    
+    // Re-enable clicks after 4 seconds
+    setTimeout(() => {
+        document.body.style.pointerEvents = 'auto';
+    }, 4000);
+    
+    // Auto-remove after 5 seconds (1 second after timer ends)
+    setTimeout(() => {
+        if (navNotification.parentNode) {
+            navNotification.style.opacity = '0';
+            navNotification.style.transform = 'translateX(-50%) translateY(-20px)';
+            setTimeout(() => {
+                if (navNotification.parentNode) {
+                    document.body.removeChild(navNotification);
                 }
-            });
-        });
+            }, 500);
+        }
+    }, 5000);
+    
+    // Allow closing by clicking on the notification itself
+    navNotification.addEventListener('click', () => {
+        document.body.style.pointerEvents = 'auto';
+        navNotification.style.opacity = '0';
+        navNotification.style.transform = 'translateX(-50%) translateY(-20px)';
+        setTimeout(() => {
+            if (navNotification.parentNode) {
+                document.body.removeChild(navNotification);
+            }
+        }, 500);
+    });
+}
 
-        // Set active navigation link
-        const sections = document.querySelectorAll('section');
-        const navLinks = document.querySelectorAll('.nav-link');
+  // Add click handlers for navigation links
+  navLinks.forEach(link => {
+    link.onclick = e => {
+      e.preventDefault();
+      show(link.dataset.target);
+    };
+  });
 
-        window.addEventListener('scroll', () => {
-            let current = '';
-            
-            sections.forEach(section => {
-                const sectionTop = section.offsetTop;
-                const sectionHeight = section.clientHeight;
-                if(scrollY >= (sectionTop - 150)) {
-                    current = section.getAttribute('id');
-                }
-            });
+  // Profile placeholder click to show about
+//   profilePlaceholder.addEventListener('click', () => {
+//     show('about');
+//   });
+  // Profile placeholder click handler with shy monkey effect
+  profilePlaceholder.addEventListener('click', function(e) {
+    // Store original content
 
-            navLinks.forEach(link => {
-                link.classList.remove('active');
-                if(link.getAttribute('href') === `#${current}`) {
-                    link.classList.add('active');
-                }
-            });
-        });
+    // Remove any existing message and glasses
+    const existingMessage = document.querySelector('.profile-message');
+    const existingGlasses = document.querySelector('.glasses-overlay');
+    if (existingMessage) existingMessage.remove();
+    if (existingGlasses) existingGlasses.remove();
+    
+    // Show funny message in terminal
+    const funnyProfileMessages = [
+        "Ahem... Are you checking me out? 🙈",
+        "So that's mean I am getting the supervision? Right? 🐵",
+        "Can work for coffee and research funding! 💰",
+    ];
+    
 
-        // Form submission
-        document.getElementById('contactForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            alert('Thank you for your message! I will get back to you soon.');
-            this.reset();
-        });
+    
+    // Show message in terminal
+    const randomMessage = funnyProfileMessages[Math.floor(Math.random() * funnyProfileMessages.length)];
+    
+    // Create glasses overlay
+    const glassesOverlay = document.createElement('div');
+    glassesOverlay.className = 'glasses-overlay';
+    glassesOverlay.textContent = '😎';
+    
+    // Add to profile container
+    this.parentNode.appendChild(glassesOverlay);
+    
+    // Create floating message
+    const messageBox = document.createElement('div');
+    messageBox.className = 'profile-message';
+    messageBox.textContent = randomMessage;
+    
+    // Add to profile container
+    this.parentNode.appendChild(messageBox);
+    
+    // Remove everything after 4 seconds
+    setTimeout(() => {
+        if (messageBox.parentNode) {
+            messageBox.remove();
+        }
+        if (glassesOverlay.parentNode) {
+            glassesOverlay.remove();
+        }
+    }, 4000);
+});
 
-        // Add fade-in animation to sections
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
+  // Set external links to open in new tab
+  document.querySelectorAll('.links a[href]:not([data-target]):not([href^="#"]):not([href^="mailto:"])').forEach(link => {
+    link.target = '_blank';
+    link.rel = 'noopener';
+  });
 
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('fade-in');
-                }
-            });
-        }, observerOptions);
+  // Handle initial hash in URL
+  const hash = location.hash.slice(1);
+  if (hash && contentMap[hash]) {
+    setTimeout(() => show(hash), 500);
+  }
 
-        document.querySelectorAll('section').forEach(section => {
-            observer.observe(section);
-        });
-    </script>
+  // Safe click event with throttling
+  let clickCooldown = false;
+  document.addEventListener('click', (e) => {
+    if (clickCooldown) return;
+    clickCooldown = true;
+    setTimeout(() => { clickCooldown = false; }, 100);
+
+    // Don't create boxes when clicking on interactive elements
+    if (e.target.closest('.links') || 
+        e.target.closest('.terminal-container') || 
+        e.target.closest('.profile-placeholder') ||
+        e.target.closest('.click-box')) {
+      return;
+    }
+    
+    createInteractiveBox(e.clientX - 150, e.clientY - 100);
+    createParticles(e.clientX, e.clientY);
+  });
+
+  // Add keyboard shortcuts
+  document.addEventListener('keydown', function(e) {
+    if (e.ctrlKey || e.metaKey) return;
+    
+    if (!terminal.hidden && !isTyping) {
+      switch(e.key) {
+        case '1': e.preventDefault(); show('about'); break;
+        case '2': e.preventDefault(); show('research'); break;
+        case '3': e.preventDefault(); show('projects'); break;
+        case '4': e.preventDefault(); show('publications'); break;
+        case '5': e.preventDefault(); show('education'); break;
+        case '6': e.preventDefault(); show('contact'); break;
+        case 'h': 
+        case 'H': 
+          e.preventDefault(); 
+          show('help'); 
+          break;
+      }
+    }
+  });
+})();
+</script>
 </body>
 </html>
